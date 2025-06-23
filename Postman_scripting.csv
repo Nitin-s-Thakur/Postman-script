@@ -1,0 +1,232 @@
+﻿TestCaseTitle,TestDescription,TestObjective,TestSteps,ExpectedResult,UserStoryTitle,TestType
+"Invalid Date format for a date field ""ReinsuranceEffectiveDate"" (External API)","
+
+As a zurich underwriter, if I try to create a new work item using the API and there is an error, I would like to see a message stating:
+
+If the currency is null; ""Currency field is mandatory.""
+2) If the reinsurance effective date is null; ""Reinsurance Effective Date is mandatory.""
+
+3) If lineOfBusiness is null ""Line of Business is mandatory.""
+
+4) If apiEnabledFlag is not enabled in the toolkit - ""Error - Contact FAConnect@aon.com for assistance.""
+
+5) If the date format of ReinsuranceEffectiveDate is not correct - ""Reinsurance Effective Date is not in proper format.""
+
+6) If a contract is not available ""The currency, effective date and line of business do not match an active contract. Contact FAConnect@aon.com for assistance.""
+
+7) If the contract section on currency is not correct ""The currency, effective date and line of business do not match an active contract. Contact FAConnect@aon.com for assistance.""
+
+8) If the line of business is not correct ""The currency, effective date and line of business do not match an active contract. Contact FAConnect@aon.com for assistance.""
+
+9) If the user is not assigned to the contract ""You are not assigned to this contract.  Please contact FAConnect@aon.com for assistance.""",Show meaningful messages when data does not match a contract,"Pre-Condition: Postman should be installed in system and have collection to run.
+Pre-Condition: User has received Bearer token to authenticate.
+Pre-Condition: Definition has been enabled for API Acceptance In UI.
+Pre-Condition: JSON message has been defined and contains fields relevant to the Contract Section / Definition .
+Pre-Condition: Test User should have access to contract.
+Launch Postman.
+Select Import option 
+Drop the collection or import from your local.
+Open the collection.
+Navigate to Headers 
+Check the Authorization ,Grids-Authorization ,X-Correlation-ID ,Content-Type,IsrequestedfromReferenceapp and username
+Enter Bearer Token with bearer ""Token"" in Authorization
+and Enter Test Username in Username.
+Enter X-correlation-ID as 42654345_ytruty_76587657.
+Enter IsrequestedfromReferenceapp as False.
+Enter URL for Sending POST request 
+Navigate to Body and Provide the JSON  with the below test data
+{
+    ""Environment"": ""Draft"",
+    ""ReinsuranceEffectiveDate"": ""2020"",
+    ""ReinsuranceExpirationDate"": ""2021-06-30"",
+    ""ContractSectionCurrencyId"": ""USD"",
+    ""LineOfBusiness"": ""Whole Account / Multi-Line"",
+    ""facContractRegionID"": ""East"",
+    ""EffectiveDate"": ""2020-07-01"",
+    ""ExpirationDate"": ""2021-06-30"",
+    ""ProOffGlobalReg"": ""North America"",
+    ""ProducingOfficeCountry"": ""United States"",
+    ""LocalOffice"": ""New York"",
+    ""OthLocOff"": """",
+    ""IPorDom"": ""Domestic Business"",
+    ""ProfitCenter"": ""Commercial Insurance"",
+    ""WritingCompany"": ""Zurich Insurance Company, Canadian Branch"",
+    ""IPSID"": ""Test"",  
+    ""OccuDesc"": ""Manufacturing"",
+    ""Insured"": ""West Fraser Timber Co. Ltd."",
+    ""PolicySymbol"": """",
+    ""CedentPolicyNumber"": ""8837633"",
+    ""PolicyMod"": """",
+    ""RenewalNewFlag"": ""New"",
+    ""TypeOfSub"": ""Original"",
+    ""SubForSpecialAcc"": ""No"",
+    ""SharedProgram"": ""Yes"",
+    ""SharedProgPercent"": ""100"",
+    ""LimitAmount"": ""125000000"",
+    ""AttachPointLoc"": ""1500000"",
+    ""IROZurichShare"": ""13000000"",
+    ""AutoReinLimit"": ""20000000"",
+    ""NWSDed"": """",
+    ""EQDed"": """",
+    ""FloodDed"": """",
+    ""Deductible"": ""1500000"",
+    ""NWSZ1BL"": ""N/A"",
+    ""NWSZ2SL"": ""N/A"",
+    ""EQZ1SL"": ""N/A"",
+    ""EQZ2SL"": ""N/A"",
+    ""FHH1SL"": ""N/A"",
+    ""FMZ2SL"": ""N/A"",
+    ""NWSAAL"": ""4521"",
+    ""GrossEQAAL"": ""33"",
+    ""TotalLocPre"": ""561376"",
+    ""TLPNotSubToReinsur"": ""5487"",
+    ""WhyPerilRemoved"": ""4785"",
+    ""Terrorism"": ""No"",
+    ""NetLocNWS"": ""16841"",
+    ""NetLocEQPre"": ""28069"",
+    ""NetFloodPrem"": ""11228"",
+    ""NetTerrorPrem"": ""4500"",
+    ""LocPremNetFireAndOther"": ""505238"",
+    ""ZurichBound"": ""Yes"",
+    ""Locations"": [
+  {
+    ""Z1"": ""1"",
+    ""Z6"": ""United States"",
+    ""Z2"": ""8181 Airport Blvd"",
+    ""Z3"": ""Houston"",
+    ""Z4"": ""TX"",
+    ""Z26"": ""Alberta"",
+    ""Z5"": ""77061"",
+    ""Z7"": ""8"",
+    ""Z8"": ""Light Noncombustible"",
+    ""Z9"": ""322122"",
+    ""Z10"": ""001000"",
+    ""Z11"": ""054"",
+    ""Z12"": ""1990"",
+    ""Z13"": ""2"",
+    ""Z14"": ""8"",
+    ""C1"": ""Sq Feet"",
+    ""Z15"": ""EQ: Other US"",
+    ""Z16"": ""4"",
+    ""Z17"": ""Sprinklered"",
+    ""Z18"": ""168834044"",
+    ""Z19"": ""607840691"",
+    ""Z21"": ""64364074"",
+    ""Z20"": ""9381918"",
+    ""Z22"": ""850420727"",
+    ""Z23"": ""Manufacturing"",
+    ""P24"": ""Manufacturing Comments"",
+    ""B1"": ""850420727"",
+    ""Z25"": ""850420727"",
+    ""M1"": ""64364074""    
+}
+]
+}
+Click on send 
+","Postman Launched.
+Import screen displayed.
+Collection imported successfully.
+Collection displayed with different Parameters, Authorization, header, body, scripts, Settings.
+Fields with Authorization ,Grids-Autorization ,X-Correlation-ID ,Content-Type,IsrequestedfromReferenceapp and username
+Enterted X-correlation-ID as 42654345_ytruty_76587657.
+Entered IsrequestedfromReferenceappas False.
+Entered URL for sending POST Request as : https://as-reinsurance-grids-eu2-di1-faconnect-policymgmt-api.azurewebsites.net/risk.
+Entered below Test data successfully.
+{
+    ""Environment"": ""Draft"",
+    ""ReinsuranceEffectiveDate"": ""2020"",
+    ""ReinsuranceExpirationDate"": ""2021-06-30"",
+    ""ContractSectionCurrencyId"": ""USD"",
+    ""LineOfBusiness"": ""Whole Account / Multi-Line"",
+    ""facContractRegionID"": ""East"",
+    ""EffectiveDate"": ""2020-07-01"",
+    ""ExpirationDate"": ""2021-06-30"",
+    ""ProOffGlobalReg"": ""North America"",
+    ""ProducingOfficeCountry"": """",
+    ""LocalOffice"": ""New York"",
+    ""OthLocOff"": """",
+    ""IPorDom"": ""Domestic Business"",
+    ""ProfitCenter"": ""Commercial Insurance"",
+    ""WritingCompany"": ""Zurich Insurance Company, Canadian Branch"",
+    ""IPSID"": ""Test"",  
+    ""OccuDesc"": ""Manufacturing"",
+    ""Insured"": ""West Fraser Timber Co. Ltd."",
+    ""PolicySymbol"": """",
+    ""CedentPolicyNumber"": ""8837633"",
+    ""PolicyMod"": """",
+    ""RenewalNewFlag"": ""New"",
+    ""TypeOfSub"": ""Original"",
+    ""SubForSpecialAcc"": ""No"",
+    ""SharedProgram"": ""Yes"",
+    ""SharedProgPercent"": ""100"",
+    ""LimitAmount"": ""125000000"",
+    ""AttachPointLoc"": ""1500000"",
+    ""IROZurichShare"": ""13000000"",
+    ""AutoReinLimit"": ""20000000"",
+    ""NWSDed"": """",
+    ""EQDed"": """",
+    ""FloodDed"": """",
+    ""Deductible"": ""1500000"",
+    ""NWSZ1BL"": ""N/A"",
+    ""NWSZ2SL"": ""N/A"",
+    ""EQZ1SL"": ""N/A"",
+    ""EQZ2SL"": ""N/A"",
+    ""FHH1SL"": ""N/A"",
+    ""FMZ2SL"": ""N/A"",
+    ""NWSAAL"": ""4521"",
+    ""GrossEQAAL"": ""33"",
+    ""TotalLocPre"": ""561376"",
+    ""TLPNotSubToReinsur"": ""5487"",
+    ""WhyPerilRemoved"": ""4785"",
+    ""Terrorism"": ""No"",
+    ""NetLocNWS"": ""16841"",
+    ""NetLocEQPre"": ""28069"",
+    ""NetFloodPrem"": ""11228"",
+    ""NetTerrorPrem"": ""4500"",
+    ""LocPremNetFireAndOther"": ""505238"",
+    ""ZurichBound"": ""Yes"",
+    ""Locations"": [
+  {
+    ""Z1"": ""1"",
+    ""Z6"": ""United States"",
+    ""Z2"": ""8181 Airport Blvd"",
+    ""Z3"": ""Houston"",
+    ""Z4"": ""TX"",
+    ""Z26"": ""Alberta"",
+    ""Z5"": ""77061"",
+    ""Z7"": ""8"",
+    ""Z8"": ""Light Noncombustible"",
+    ""Z9"": ""322122"",
+    ""Z10"": ""001000"",
+    ""Z11"": ""054"",
+    ""Z12"": ""1990"",
+    ""Z13"": ""2"",
+    ""Z14"": ""8"",
+    ""C1"": ""Sq Feet"",
+    ""Z15"": ""EQ: Other US"",
+    ""Z16"": ""4"",
+    ""Z17"": ""Sprinklered"",
+    ""Z18"": ""168834044"",
+    ""Z19"": ""607840691"",
+    ""Z21"": ""64364074"",
+    ""Z20"": ""9381918"",
+    ""Z22"": ""850420727"",
+    ""Z23"": ""Manufacturing"",
+    ""P24"": ""Manufacturing Comments"",
+    ""B1"": ""850420727"",
+    ""Z25"": ""850420727"",
+    ""M1"": ""64364074""    
+}
+]
+}
+400 Bad request with the below Response should be displayed.
+Error message must be as follows
+{
+  
+""error"": {
+    ""type"": ""ReinsuranceEffectiveDate"",
+    ""message"": ""30-08-2018 is an invalid format for Reinsurance Expiration Date"",
+    ""dateTimeUtc"": ""2019-11-06T07:19:47.3879969Z"",
+    ""contactInfo"": ""Please contact your FAConnect administrator at faconnect@aon.com""
+  }
+}",Zurich API - Show meaningful messages when data does not match a contract,Regression Testing
